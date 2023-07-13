@@ -1,4 +1,12 @@
-        static void Produtos(){
+using System.Globalization; 
+using Banco.Natalia;
+
+namespace Course
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {          
             Produto p = new Produto(); //variavel p
 
             Console.WriteLine("Entre os dados do produto");
@@ -27,42 +35,6 @@
 
             Console.WriteLine();
             Console.WriteLine("Dados atualizados: " + p);
-        }
-    
-classe:
-
-
-using System.Globalization;
-
-namespace Banco.Natalia{
-    public class Produto{
-        
-        public string Nome;
-        public double Preco;
-        public int Quantidade;
-
-        public double ValorTotalEmEstoque(){
-            return Preco * Quantidade;
-    }
-
-    public void AdicionarProdutos(int quantidade){
-        Quantidade += quantidade;
-    }
-    public void RemoverProdutos(int quantidade){
-        Quantidade -= quantidade;
-    }
-
-
-
-    //sobreposicao
-        public override string ToString(){
-            return Nome 
-            + ", $ " 
-            + Preco.ToString("F2", CultureInfo.InvariantCulture)
-            + ", "
-            + Quantidade
-            + " unidades, Total; $ "
-            + ValorTotalEmEstoque().ToString("F2", CultureInfo.InvariantCulture);
         }
     }
 }

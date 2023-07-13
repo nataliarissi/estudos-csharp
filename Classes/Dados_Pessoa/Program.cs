@@ -1,4 +1,12 @@
-        static void DadosPessoas(){
+using System.Globalization; 
+using Banco.Natalia;
+
+namespace Course
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {          
             Pessoa p1 = new Pessoa();
             Pessoa p2 = new Pessoa();
 
@@ -19,12 +27,5 @@
             else
                 Console.WriteLine("Pessoa mais velha: " + p2.Nome);
         }
-
-classe:
-
-namespace Banco.Natalia{
-    class Pessoa{
-        public string Nome;
-        public int Idade;
     }
 }

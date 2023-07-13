@@ -1,4 +1,12 @@
-        static void SalarioMedia(){
+using System.Globalization; 
+using Banco.Natalia;
+
+namespace Course
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {          
             Funcionario f1 = new Funcionario();
             Funcionario f2 = new Funcionario();
 
@@ -19,15 +27,5 @@
 
             Console.WriteLine("Salario medio =" + media.ToString("F2", CultureInfo.InvariantCulture));
         }
-
-classe:
-
-namespace Banco.Natalia
-{
-    public class Funcionario
-    {
-        public string Nome;
-        public double Salario;
-
     }
 }

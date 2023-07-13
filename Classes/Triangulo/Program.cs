@@ -1,4 +1,12 @@
-        static void PrintarNaTela(){
+using System.Globalization; 
+using Banco.Natalia;
+
+namespace Course
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {          
             Triangulo x, y;
             x = new Triangulo();
             y = new Triangulo();
@@ -23,22 +31,5 @@
             else
                 Console.WriteLine("Maior area: Y");
         }
-    
-classe:
-
-using System; //pra usar math
-namespace Banco.Natalia{
-    class Triangulo{
-
-        public double A; //num pode ser quebrado
-        public double B;
-        public double C;
-
-        public double AreaT(){
-            double p = (A + B + C ) / 2.0;
-            return Math.Sqrt( p * (p - A) * (p - B) * (p - C));
-        }
-
-
     }
 }
