@@ -213,36 +213,75 @@ internal class ProgramAluno
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
-    int n = int.Parse(Console.ReadLine());
+//     int n = int.Parse(Console.ReadLine());
 
-    int[,] matriz = new int[n, n];
+//     int[,] matriz = new int[n, n];
 
-    for (int m = 0; m < n; n++){
-//percorrer as linhas
-        string[] values = Console.ReadLine().Split(' ');
+//     for (int m = 0; m < n; n++){
+// //percorrer as linhas
+//         string[] values = Console.ReadLine().Split(' ');
 
-        for(int l = 0; l <n; l++){
-//percorrer as colunas
-            matriz[m, l] = int.Parse(values[l]);
-//percorrer e guardar os valores
-        }
-    }
+//         for(int l = 0; l <n; l++){
+// //percorrer as colunas
+//             matriz[m, l] = int.Parse(values[l]);
+// //percorrer e guardar os valores
+//         }
+//     }
 
-    Console.WriteLine("Diagonal Principal: ");
-    for (int i = 0; i < n; i++){
-        Console.WriteLine(matriz[i, i] + " ");
-    }
-    Console.WriteLine();
+//     Console.WriteLine("Diagonal Principal: ");
+//     for (int i = 0; i < n; i++){
+//         Console.WriteLine(matriz[i, i] + " ");
+//     }
+//     Console.WriteLine();
 
-    int contagem = 0;
-//percorrer uma matriz inteira
-    for(int m = 0; m < n; m++){
-        for(int l = 0; l < n; l++){
-            if(matriz[m, l] < 0){
-                contagem++;
+//     int contagem = 0;
+// //percorrer uma matriz inteira
+//     for(int m = 0; m < n; m++){
+//         for(int l = 0; l < n; l++){
+//             if(matriz[m, l] < 0){
+//                 contagem++;
+//             }
+//         }
+//     }
+//     Console.WriteLine("Números negativos: " + contagem);
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+        Console.WriteLine("Digite dois valores separados por espaço: ");
+        var numerosDigitados = Console.ReadLine();
+        string[] linha = numerosDigitados.Split(' ');
+        int quantidadeLinhas = int.Parse(linha[0]);
+        int quantidadeColunas = int.Parse(linha[1]);
+        Console.WriteLine("Valores: " + quantidadeLinhas + ", " + quantidadeColunas);
+        int[,] matriz = new int[quantidadeLinhas, quantidadeColunas];
+
+        for (int linhaAtual = 0; linhaAtual < quantidadeLinhas; linhaAtual++) {
+            Console.WriteLine("Digite a linha atual(inteira): " + (linhaAtual +1));
+            string[] valores = Console.ReadLine().Split(' ');
+            for (int colunaAtual = 0; colunaAtual < quantidadeColunas; colunaAtual++) {
+                matriz[linhaAtual, colunaAtual] = int.Parse(valores[colunaAtual]);
             }
         }
-    }
-    Console.WriteLine("Números negativos: " + contagem);
+
+        int numeroSelecionado = int.Parse(Console.ReadLine());
+
+        for (int y = 0; y < quantidadeLinhas; y++) {
+            for (int z = 0; z < quantidadeColunas; z++) {
+                if (matriz[y, z] == numeroSelecionado) {
+                    Console.WriteLine("Posição " + y + "," + z + ":");
+                    if (z > 0) {
+                        Console.WriteLine("Esquerda: " + matriz[y, z - 1]);
+                    }
+                    if (y > 0) {
+                        Console.WriteLine("Em cima: " + matriz[y - 1, z]);
+                    }
+                    if (z < quantidadeColunas - 1) {
+                        Console.WriteLine("Direita: " + matriz[y, z + 1]);
+                    }
+                    if (y < quantidadeLinhas - 1) {
+                        Console.WriteLine("Embaixo: " + matriz[y + 1, z]);
+                    }
+                }
+            }
+        }
     }
 }
