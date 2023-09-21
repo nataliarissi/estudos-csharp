@@ -1,110 +1,95 @@
 ﻿
-// var x = 10;
-// var y = 20.0;
-// var z = "Luke";
+using BancoAprendizado.Conteudos.Entidades;
+using BancoAprendizado.Conteudos.Entidades.Enums;
 
-// Console.WriteLine(x);
-// Console.WriteLine(y);
-// Console.WriteLine(z);
+namespace Course{
+    class Program{
+        static void Main(string[] args){ 
 
-// int n = int.Parse(Console.ReadLine());
-// string dia;
+// //CHAMAR MÉTODOS
+//         IntervaloTempo timeSpan = new IntervaloTempo();
+//         timeSpan.ComandosTimeSpan();
+//         timeSpan.ComandosTimeSpanDerivados();
 
-///////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
 
-//     switch(n){
-//         case 1: 
-//             dia = "Segunda-Feira";
-//             break;
-//         case 2: 
-//             dia = "Terça-Feira";
-//             break;
-//         case 3: 
-//             dia = "Quarta-Feira";
-//             break;
-//         case 4: 
-//             dia = "Quinta-Feira";
-//             break;
-//         case 5: 
-//             dia = "Sexta-Feira";
-//             break;
-//         case 6: 
-//             dia = "Sábado";
-//             break;
-//         case 7: 
-//             dia = "Domingo";
-//             break;
-//         default:
-//             dia = "Valor inválido";
-//             break;
-//     }
-// Console.WriteLine("Dia: " + dia);
+        // Order order = new Order{
+        //     Id = 1080,
+        //     Moment = DateTime.Now,
+        //     Status = OrderStatus.PendingPayment
+        // };
 
-///////////////////////////////////////////////////////
+        // Console.WriteLine(order);
 
-// // ternária
-// // (condição) ? valor_se_verdadeiro : valor_se_falso
+        // string txt = OrderStatus.PendingPayment.ToString();
 
-// double preco = double.Parse(Console.ReadLine());
-// double desconto = (preco < 20.0) ? preco * 0.1 : preco * 0.05;
-//     // if(preco < 20.0)
-//     //     desconto = preco * 0.1;
-//     // else 
-//     //     desconto = preco * 0.05;
+        // OrderStatus os = Enum.Parse<OrderStatus>("Delivered");
 
-// Console.WriteLine(desconto);
+        // Console.WriteLine(os);
+        // Console.WriteLine(txt);
 
-///////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
 
-using System.Data.SqlTypes;
+        // Console.WriteLine("Enter department's name: ");
+        // string deptName = Console.ReadLine();
+        // Console.WriteLine("Enter worker data: ");
+        // Console.WriteLine("Name: ");
+        // string name = Console.ReadLine();
+        // Console.Write("Level (Junior/Midlevel/Senior): ");
+        // WorkerLevel level = Enum.Parse<WorkerLevel>(Console.ReadLine());
+        // Console.WriteLine("Base salary: ");
+        // double baseSalary = double.Parse(Console.ReadLine());
 
-// string original = "abcde FGHIJ ABC abc DEFG     ";
-// //string é uma varável imutável, não altera contéudo
-// string s1 = original.ToUpper();
-// string s2 = original.ToLower();
-// string s3 = original.Trim();
+        // Department dept = new Department(deptName);
+        // Worker worker = new Worker(name, level, baseSalary, dept);
 
-// int n1 = original.IndexOf("bc"); //procura
-// int n2 = original.LastIndexOf("bc");
+        // Console.WriteLine("How many contracts to this worker? ");
+        // int n = int.Parse(Console.ReadLine());
 
-// string s4 = original.Substring(3);
-// string s5 = original.Substring(3, 5);
+        // for(int m = 1; m <=n; m++){
+        //     Console.WriteLine($"Enter #{m} contract data: ");
+        //     Console.Write("Date (DD/MM/YYYY): ");
+        //     DateTime date = DateTime.Parse(Console.ReadLine());
+        //     Console.Write("Value per hour: ");
+        //     double valuePerHour = double.Parse(Console.ReadLine());
+        //     Console.WriteLine("Duration (hours): ");
+        //     int hours = int.Parse(Console.ReadLine());
 
-// string s6 = original.Replace('a', 'x');
-// string s7 = original.Replace("abc", "xy");
+        //     HourContract contract = new HourContract(date, valuePerHour, hours);
+        //     worker.AddContract(contract);
+        // }   
+        // Console.WriteLine();
+        // Console.WriteLine("Enter month year to calculate income (MM/YYYY): ");
+        // string monthAndYear = Console.ReadLine();
+        // int month = int.Parse(monthAndYear.Substring(0, 2));
+        // int year = int.Parse(monthAndYear.Substring(3));
+        
+        // Console.WriteLine("Name: " + worker.Name);
+        // Console.WriteLine("Department: " + worker.Department.Name);        
+        // Console.WriteLine("Name: " + worker.Name);
+        // Console.WriteLine("Income for " + monthAndYear + ": " + worker.Income(year, month));
 
-// bool b1 = String.IsNullOrEmpty(original);
-// bool b2 = String.IsNullOrWhiteSpace(original);
+////////////////////////////////////////////////////////////////
 
-// Console.WriteLine("Original: " + original);
-// Console.WriteLine("ToUpper: " + s1);
-// Console.WriteLine("ToLower: " + s2);
-// Console.WriteLine("Trim: " + s3); //apaga espaço em branco
-// Console.WriteLine("IndexOf('bc'): " + n1); //aparece na primeira posição
-// Console.WriteLine("LastIndexOf('bc'): " + n2); //última ocorrência do bc
-// Console.WriteLine("Substring(3): " + s4); //recortar string
-// Console.WriteLine("Substring(3, 5): " + s5); //imprimiu 5 caracteres a partir da posição 3
-// Console.WriteLine("Replace('a', 'x'): " + s6); //substituir parte da string por outra
-// Console.WriteLine("Replace('abc', 'xy'): " + s7);
-// Console.WriteLine("IsNullOrEmpty: " + b1);
-// Console.WriteLine("IsNullOrWhiteSpace: " + b2); //para conferir se são espaços em branco
+        Comment c1 = new Comment("Everyone lives their life within their own subjective interpretation");
+        Comment c2 = new Comment("Wow that's awesome!");
 
-///////////////////////////////////////////////////////
+        Post p1 = new Post(DateTime.Parse("17/06/2020 13:07:58"), "Itachi is the best character", "No matter how powerful you become, never try to do everything alone, otherwise you will fail!", 100);
+        
+        p1.AddComment(c1);
+        p1.AddComment(c2);
 
-//armazenamento de data e horário
-// DateTime d1 = DateTime.Now;
+        Comment c3 = new Comment("...View from cabin...");
+        Comment c4 = new Comment("Wow that's awesome!");
 
-// Console.WriteLine(d1);
-// Console.WriteLine(d1.Ticks);
+        Post p2 = new Post(DateTime.Parse("21/07/2020 20:20:58"), "Kamisama - As soon as I heard you were in trouble, I came...", "I sincerely wish that the line of fate is not broken!", 500);
+        
+        p2.AddComment(c3);
+        p2.AddComment(c4);
 
-DateTime d1 = new DateTime(2023, 09, 19);
-Console.WriteLine(d1);
-
-//especificar horário
-DateTime d2 = new DateTime(2018, 09, 19, 23, 40, 7);
-Console.WriteLine(d2);
-
-DateTime d3 = new DateTime(2018, 09, 19, 23, 40, 7, 500);
-Console.WriteLine(d3);
-
-//horário global ou local
+        Console.WriteLine(p1);
+        Console.WriteLine(p2);
+        
+        }
+    }
+}
