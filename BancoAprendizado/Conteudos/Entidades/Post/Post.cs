@@ -1,6 +1,6 @@
 using System.Text;
 
-namespace BancoAprendizado.Conteudos.Entidades
+namespace BancoAprendizado.Conteudos.Entidades.Post
 {
     public class Post{
         public DateTime Moment { get; set; }

@@ -1,4 +1,4 @@
-namespace BancoAprendizado.Conteudos.Entidades
+namespace BancoAprendizado.Conteudos.Entidades.Worker
 {
     public class HourContract{
         public DateTime Date { get; set; }

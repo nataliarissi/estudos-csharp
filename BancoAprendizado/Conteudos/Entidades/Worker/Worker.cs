@@ -1,6 +1,6 @@
 using BancoAprendizado.Conteudos.Entidades.Enums;
 
-namespace BancoAprendizado.Conteudos.Entidades
+namespace BancoAprendizado.Conteudos.Entidades.Worker
 {
     class Worker{
         public string Name { get; set; }

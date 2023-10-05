@@ -1,10 +1,10 @@
 
 using BancoAprendizado.Conteudos.Entidades.Enums;
 
-namespace BancoAprendizado.Conteudos.Entidades
+namespace BancoAprendizado.Conteudos.Entidades.Worker
 {
     class Order{
-//Enumeracoes
+//Enumerações
 
     public int Id {get; set;}
     public DateTime Moment { get; set; }

@@ -1,4 +1,4 @@
-namespace BancoAprendizado.Conteudos.Entidades
+namespace BancoAprendizado.Conteudos.Entidades.Post
 {
     public class Comment{
         public string Text { get; set; }
