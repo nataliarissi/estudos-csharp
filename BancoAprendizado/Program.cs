@@ -1,7 +1,9 @@
 ﻿
 using BancoAprendizado.Conteudos.Entidades;
 using BancoAprendizado.Conteudos.Entidades.Account;
+using BancoAprendizado.Conteudos.Entidades.Employee;
 using BancoAprendizado.Conteudos.Entidades.Enums;
+using Course.Entities;
 
 namespace Course{
     class Program{
@@ -98,34 +100,118 @@ namespace Course{
 
 ////////////////////////////////////////////////////////////////
 
-        Account account = new Account(1001, "Luke", 0.0);
-        BusinessAccount businessAccount = new BusinessAccount(1002, "Itachi", 0.0, 500.0);
+        // Account account = new Account(1001, "Luke", 0.0);
+        // BusinessAccount businessAccount = new BusinessAccount(1002, "Itachi", 0.0, 500.0);
 
-        //UPCASTING
-        Account firstAccount = businessAccount;
-        Account secondAccount = new BusinessAccount(1003, "Nat", 0.0, 200.0);
-        Account thirdAccount = new SavingAccount(1004, "Madara", 0.0, 0.01);
+        // //UPCASTING
+        // Account firstAccount = businessAccount;
+        // Account secondAccount = new BusinessAccount(1003, "Nat", 0.0, 200.0);
+        // Account thirdAccount = new SavingAccount(1004, "Madara", 0.0, 0.01);
         
-        //DOWNCASTING
-        BusinessAccount fourthAccount = (BusinessAccount)secondAccount;
-        fourthAccount.Loan(100.0);
-        //secondAccount.Loan(); - erro de compilação
+        // //DOWNCASTING
+        // BusinessAccount fourthAccount = (BusinessAccount)secondAccount;
+        // fourthAccount.Loan(100.0);
+        // //secondAccount.Loan(); - erro de compilação
 
-        // BusinessAcount fifthAccount = (BusinessAcount)thirdAccount; - erro
-        if (thirdAccount is BusinessAccount){
-                //BusinessAccount fifthAccount = (BusinessAccount)thirdAccount;  or:
-                BusinessAccount fifthAccount = thirdAccount as BusinessAccount;
-                fifthAccount.Loan(200.0);
-                Console.WriteLine("Loan!");
-        }
+        // // BusinessAcount fifthAccount = (BusinessAcount)thirdAccount; - erro
+        // if (thirdAccount is BusinessAccount){
+        //         //BusinessAccount fifthAccount = (BusinessAccount)thirdAccount;  or:
+        //         BusinessAccount fifthAccount = thirdAccount as BusinessAccount;
+        //         fifthAccount.Loan(200.0);
+        //         Console.WriteLine("Loan!");
+        // }
 
-        if (thirdAccount is SavingAccount){
-                //SavingAccount fifthAccount = (SavingAccount)thirdAccount;  or:
-                SavingAccount fifthAccount = thirdAccount as SavingAccount;
-                fifthAccount.UpdateBalance();
-                Console.WriteLine("Update!");
-        }
+        // if (thirdAccount is SavingAccount){
+        //         //SavingAccount fifthAccount = (SavingAccount)thirdAccount;  or:
+        //         SavingAccount fifthAccount = thirdAccount as SavingAccount;
+        //         fifthAccount.UpdateBalance();
+        //         Console.WriteLine("Update!");
+        // }
 
+////////////////////////////////////////////////////////////////
+// //Sobreposição - reimplementa na subclasse a operação existente na super classe
+// //para dar um comportamento diferente a ela
+
+//         Account account = new Account(1001, "Luke", 500.0);
+//         Account secondAccount = new SavingAccount(1002, "Itachi", 500.0, 0.01);
+
+//         // PARA SACAR
+//         account.Withdraw(10.0);
+//         secondAccount.Withdraw(10.0);
+
+//         Console.WriteLine(account.Balance);
+//         Console.WriteLine(secondAccount.Balance);
+
+////////////////////////////////////////////////////////////////
+
+        // List<Employee> list = new List<Employee>();
+        
+        // Console.Write("Enter the number of employees: ");
+        // int n = int.Parse(Console.ReadLine());
+
+        // for(int m = 1; m < n; m++){
+        //         Console.WriteLine($"Employee #{m} data: ");
+        //         Console.Write("Outsourced (y/n)? ");
+        //         char ch = char.Parse(Console.ReadLine());
+        //         Console.Write("Name: ");
+        //         string name = Console.ReadLine();
+        //         Console.Write("Hours: ");
+        //         int hours = int.Parse(Console.ReadLine());
+        //         Console.Write("Value per hour: ");
+        //         double valuePerHour = double.Parse(Console.ReadLine());
+        //         if (ch == 'y'){
+        //                 Console.Write("Additional charge: ");
+        //                 double additionalCharge = double.Parse(Console.ReadLine());
+        //                 list.Add(new OutsourcedEmployee(name, hours, valuePerHour, additionalCharge));
+        //         }
+        //         else{
+        //                 list.Add(new Employee(name, hours, valuePerHour));
+        //         }
+        // }
+
+        // Console.WriteLine();
+        // Console.WriteLine("PAYMENTS: ");
+        // foreach(Employee emp in list){
+        //         Console.WriteLine(emp.Name + "- $ " + emp.Payment().ToString());
+        // }
+
+////////////////////////////////////////////////////////////////
+
+            List<Product> list = new List<Product>();
+
+            Console.Write("Enter the number of products: ");
+            int n = int.Parse(Console.ReadLine());
+
+            for (int m = 1; m <= n; m++)
+            {
+                Console.WriteLine("Product #" + m + " data:");
+                Console.Write("Common, used or imported (c/u/i)? ");
+                char type = char.Parse(Console.ReadLine());
+                Console.Write("Name: ");
+                String name = Console.ReadLine();
+                Console.Write("Price: ");
+                double price = double.Parse(Console.ReadLine());
+                if (type == 'c'){
+                    list.Add(new Product(name, price));
+                }
+                else if (type == 'u'){
+                    Console.Write("Manufacture date (DD/MM/YYYY): ");
+                    DateTime date = DateTime.Parse(Console.ReadLine());
+                    list.Add(new UsedProduct(name, price, date));
+                }
+                else{
+                    Console.Write("Customs fee: ");
+                    double customsFee = double.Parse(Console.ReadLine());
+                    list.Add(new ImportedProduct(name, price, customsFee));
+                }
+            }
+
+            Console.WriteLine();
+            Console.WriteLine("PRICE TAGS:");
+            foreach (Product prod in list)
+            {
+                Console.WriteLine(prod.PriceTag());
+            }
         }
     }
 }

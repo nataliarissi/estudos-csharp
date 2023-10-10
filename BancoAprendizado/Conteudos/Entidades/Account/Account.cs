@@ -16,8 +16,9 @@ namespace BancoAprendizado.Conteudos.Entidades.Account
         Balance = balance;
     }
   
-    public void Withdraw(double amount){
-        Balance -= amount;
+    public virtual void Withdraw(double amount){
+        //virtual para ser sobrescrito sobre as subclasses
+        Balance -= amount + 5.0;
     }
 
     public void Deposit(double amount){

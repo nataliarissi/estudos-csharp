@@ -1,7 +1,9 @@
 namespace BancoAprendizado.Conteudos.Entidades.Account
 {
     //herança :
-    public class SavingAccount : Account{
+    sealed class SavingAccount : Account{
+// sealed evita que a classe seja herdada
+// proteger regras de negócio
         public double InterestRate { get; set; }
 
         public SavingAccount(){
@@ -14,5 +16,15 @@ namespace BancoAprendizado.Conteudos.Entidades.Account
         public void UpdateBalance(){
             Balance += Balance * InterestRate;
         }
+
+        public sealed override void Withdraw(double amount){
+            // Balance -= amount;
+            base.Withdraw(amount);
+            Balance -= 2.0;
+            //base - reaproveitar a operação da super classe e adicionar o solicitado
+        }
+    //úlitmo método não pode ser sobrescrito novamente
+
+    // normalmente selar métodos sobrepostos para que não tenha múltiplas inconsistências
     }
 }
