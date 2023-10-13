@@ -1,4 +1,4 @@
-namespace BancoInterface.Entities.CarRental
+namespace BancoInterface.Entities.Rental
 {
     class CarRental{
         public DateTime Start { get; set; }

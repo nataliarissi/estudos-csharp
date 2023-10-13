@@ -1,4 +1,4 @@
-namespace BancoInterface.Entities.CarRental
+namespace BancoInterface.Entities.Rental
 {
     class Invoice{
         public double BasicPayment { get; set; }

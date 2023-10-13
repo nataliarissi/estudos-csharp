@@ -1,4 +1,4 @@
-namespace BancoInterface.Entities.CarRental
+namespace BancoInterface.Entities.Rental
 {
     class Vehicle{
         public string Model { get; set; }
