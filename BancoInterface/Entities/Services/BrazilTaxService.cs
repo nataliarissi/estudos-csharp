@@ -1,7 +1,4 @@
-using BancoInterface.Entities.Services;
-using BancoInterface.Entities.Services.BrazilTaxService;
-
-namespace BancoInterface.Entities.Services{
+namespace BancoInterface.Entities.Services.BrazilTaxService{
     class BrazilTaxService : ITaxService{
         public double Tax(double amount){
             if(amount <= 100){

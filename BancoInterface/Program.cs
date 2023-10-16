@@ -1,5 +1,6 @@
 ﻿using BancoInterface.Entities.Rental;
-using BancoInterface.Entities.Services;
+using BancoInterface.Entities.Services.BrazilTaxService;
+
 namespace BancoInterface{
     class Program{
             static void Main(string[] args){
@@ -14,13 +15,13 @@ namespace BancoInterface{
             DateTime finish = DateTime.ParseExact(Console.ReadLine(), "dd/MM/yyyy HH:mm", null);        
 
             Console.Write("Enter price per hour: ");
-            double hour = double.Parse(Console.ReadLine());
+            double pricePerHour = double.Parse(Console.ReadLine());
             Console.Write("Enter price per day: ");
-            double day = double.Parse(Console.ReadLine());        
+            double pricePerDay = double.Parse(Console.ReadLine());        
 
             CarRental carRental = new CarRental(start, finish, new Vehicle(model));
 
-            RentalService rentalService = new RentalService(hour, day, new BrazilTaxService());
+            RentalService rentalService = new RentalService(pricePerHour, pricePerDay, new BrazilTaxService());
 
             rentalService.ProcessInvoice(carRental);
 

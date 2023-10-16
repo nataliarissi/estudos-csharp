@@ -1,7 +1,6 @@
 using BancoInterface.Entities.Rental;
-using BancoInterface.Entities.Services.BrazilTaxService;
 
-namespace BancoInterface.Entities.Services{
+namespace BancoInterface.Entities.Services.BrazilTaxService{
     class RentalService{
         public double PricePerHour { get; private set; }
         public double PricePerDay { get; private set; }
