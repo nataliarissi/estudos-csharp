@@ -1,32 +1,31 @@
-﻿using BancoInterface.Entities.Rental;
+﻿using BancoInterface.Entities;
+using BancoInterface.Entities.Devices;
+using BancoInterface.Entities.Rental;
 using BancoInterface.Entities.Services.BrazilTaxService;
+using BancoInterface.Entities.Shapes;
 
 namespace BancoInterface{
     class Program{
             static void Main(string[] args){
-        //INTERFACE - estabelecer contrato que a classe\struct deve cumprir
 
-            Console.WriteLine("Enter rental data ");
-            Console.Write("Car model: ");
-            string model = Console.ReadLine();
-            Console.Write("Pickup (dd/MM/yyyy hh:mm): ");
-            DateTime start = DateTime.ParseExact(Console.ReadLine(), "dd/MM/yyyy HH:mm", null);
-            Console.Write("Return (dd/MM/yyyy hh:mm): ");
-            DateTime finish = DateTime.ParseExact(Console.ReadLine(), "dd/MM/yyyy HH:mm", null);        
+                string path = @"c:\temp\in.txt";
 
-            Console.Write("Enter price per hour: ");
-            double pricePerHour = double.Parse(Console.ReadLine());
-            Console.Write("Enter price per day: ");
-            double pricePerDay = double.Parse(Console.ReadLine());        
-
-            CarRental carRental = new CarRental(start, finish, new Vehicle(model));
-
-            RentalService rentalService = new RentalService(pricePerHour, pricePerDay, new BrazilTaxService());
-
-            rentalService.ProcessInvoice(carRental);
-
-            Console.WriteLine("INVOICE: ");
-            Console.WriteLine(carRental.Invoice);              
+                try{
+                    using (StreamReader streamReader = File.OpenText(path)){
+                        List<string> list = new List<string>();
+                        while(!streamReader.EndOfStream){
+                            list.Add(streamReader.ReadLine());
+                        }
+                        //ordenar lista
+                        list.Sort();
+                        foreach(string str in list){
+                            Console.WriteLine(str);
+                        }
+                    }
+                }catch(IOException e){
+                    Console.WriteLine("An error occurred");
+                    Console.WriteLine(e.Message);
+                }
         }   
     }
 }
