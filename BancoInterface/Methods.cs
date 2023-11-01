@@ -55,4 +55,25 @@ public class Methods{
         comboDevice.Print("My dissertation");
         Console.WriteLine(comboDevice.Scan());
     }
+
+    public void buscarLerLista(){
+        string path = @"c:\temp\in.txt";
+
+        try{
+            using (StreamReader streamReader = File.OpenText(path)){
+                List<string> list = new List<string>();
+                while(!streamReader.EndOfStream){
+                    list.Add(streamReader.ReadLine());
+                }
+                //ordenar lista
+                list.Sort();
+                foreach(string str in list){
+                    Console.WriteLine(str);
+                }
+            }
+        }catch(IOException e){
+            Console.WriteLine("An error occurred");
+            Console.WriteLine(e.Message);
+        }
+    }
 }

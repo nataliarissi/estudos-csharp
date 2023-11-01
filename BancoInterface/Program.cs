@@ -12,14 +12,13 @@ namespace BancoInterface{
 
                 try{
                     using (StreamReader streamReader = File.OpenText(path)){
-                        List<string> list = new List<string>();
+                        List<Employee> list = new List<Employee>();
                         while(!streamReader.EndOfStream){
-                            list.Add(streamReader.ReadLine());
+                            list.Add(new Employee(streamReader.ReadLine()));
                         }
-                        //ordenar lista
                         list.Sort();
-                        foreach(string str in list){
-                            Console.WriteLine(str);
+                        foreach(Employee emp in list){
+                            Console.WriteLine(emp);
                         }
                     }
                 }catch(IOException e){
