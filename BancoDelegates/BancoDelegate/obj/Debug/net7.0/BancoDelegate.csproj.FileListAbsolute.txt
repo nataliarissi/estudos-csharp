@@ -1,0 +1,15 @@
+C:\Users\Natália Rissi\Desktop\programacao_C#\csharp\BancoDelegates\BancoDelegate\bin\Debug\net7.0\BancoDelegate.exe
+C:\Users\Natália Rissi\Desktop\programacao_C#\csharp\BancoDelegates\BancoDelegate\bin\Debug\net7.0\BancoDelegate.deps.json
+C:\Users\Natália Rissi\Desktop\programacao_C#\csharp\BancoDelegates\BancoDelegate\bin\Debug\net7.0\BancoDelegate.runtimeconfig.json
+C:\Users\Natália Rissi\Desktop\programacao_C#\csharp\BancoDelegates\BancoDelegate\bin\Debug\net7.0\BancoDelegate.dll
+C:\Users\Natália Rissi\Desktop\programacao_C#\csharp\BancoDelegates\BancoDelegate\bin\Debug\net7.0\BancoDelegate.pdb
+C:\Users\Natália Rissi\Desktop\programacao_C#\csharp\BancoDelegates\BancoDelegate\obj\Debug\net7.0\BancoDelegate.csproj.AssemblyReference.cache
+C:\Users\Natália Rissi\Desktop\programacao_C#\csharp\BancoDelegates\BancoDelegate\obj\Debug\net7.0\BancoDelegate.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Natália Rissi\Desktop\programacao_C#\csharp\BancoDelegates\BancoDelegate\obj\Debug\net7.0\BancoDelegate.AssemblyInfoInputs.cache
+C:\Users\Natália Rissi\Desktop\programacao_C#\csharp\BancoDelegates\BancoDelegate\obj\Debug\net7.0\BancoDelegate.AssemblyInfo.cs
+C:\Users\Natália Rissi\Desktop\programacao_C#\csharp\BancoDelegates\BancoDelegate\obj\Debug\net7.0\BancoDelegate.csproj.CoreCompileInputs.cache
+C:\Users\Natália Rissi\Desktop\programacao_C#\csharp\BancoDelegates\BancoDelegate\obj\Debug\net7.0\BancoDelegate.dll
+C:\Users\Natália Rissi\Desktop\programacao_C#\csharp\BancoDelegates\BancoDelegate\obj\Debug\net7.0\refint\BancoDelegate.dll
+C:\Users\Natália Rissi\Desktop\programacao_C#\csharp\BancoDelegates\BancoDelegate\obj\Debug\net7.0\BancoDelegate.pdb
+C:\Users\Natália Rissi\Desktop\programacao_C#\csharp\BancoDelegates\BancoDelegate\obj\Debug\net7.0\BancoDelegate.genruntimeconfig.cache
+C:\Users\Natália Rissi\Desktop\programacao_C#\csharp\BancoDelegates\BancoDelegate\obj\Debug\net7.0\ref\BancoDelegate.dll
