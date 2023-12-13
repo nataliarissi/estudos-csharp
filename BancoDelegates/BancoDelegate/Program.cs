@@ -7,7 +7,7 @@ using System.Linq;
 namespace BancoDelegate{
     class Program {
         static void Main (string[] args) {
-            
+        
         }
     }
 }

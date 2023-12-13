@@ -178,6 +178,7 @@ public class Methods{
             foreach(string s in result){
                 Console.WriteLine(s);
             }
+        }
 
         public void TestLINQ(){
             //criar/espeficar data source - onde vem dados (bancos de dados, arquivo, array)
@@ -194,5 +195,91 @@ public class Methods{
                 Console.WriteLine(x);
             }
         }
+
+        public void TesteLINQTWO(){
+        // static void Print<T>(string message, IEnumerable<T> collection){
+            Console.WriteLine(message);
+            foreach(T obj in collection){
+                Console.WriteLine(obj);
+            }
+            Console.WriteLine();
+        // }
+        // static void Main (string[] args) {
+            Category firstCategory = new Category(){ Id = 1, Name = "Tools", Tier = 2 };
+            Category secondCategory = new Category(){ Id = 2, Name = "Computers", Tier = 1 };
+            Category thirdCategory = new Category(){ Id = 3, Name = "Electronics", Tier = 1 };
+        
+            List<Products> products = new List<Products>(){
+                new Products { Id = 1, Name = "Computer", Price = 1110, Category = secondCategory },
+                new Products { Id = 2, Name = "Hammer", Price = 90, Category = firstCategory },
+                new Products { Id = 3, Name = "TV", Price = 1700, Category = thirdCategory },
+                new Products { Id = 4, Name = "Notebook", Price = 1300, Category = secondCategory },
+                new Products { Id = 5, Name = "Saw", Price = 80, Category = firstCategory },
+                new Products { Id = 6, Name = "Tablet", Price = 700, Category = secondCategory },
+                new Products { Id = 7, Name = "Camera", Price = 700, Category = thirdCategory },
+                new Products { Id = 8, Name = "Printer", Price = 350, Category = thirdCategory },
+                new Products { Id = 9, Name = "MacBook", Price = 1800, Category = secondCategory },
+                new Products { Id = 10, Name = "Sound Bar", Price = 700, Category = thirdCategory },
+                new Products { Id = 11, Name = "Levej", Price = 70, Category = firstCategory }
+            };
+
+            var firstResult = products.Where(p => p.Category.Tier == 1 && p.Price < 900);
+            //filtrar
+            Print("TIER 1 AND PRICE < 900 ", firstResult);
+
+            var secondResult = products.Where(p => p.Category.Name == "Tools").Select(p => p.Name);
+            Print("NAMES OF PRODUCTS FROM TOOLS ", secondResult);
+
+            var thirdResult = products.Where(p => p.Name[0] == 'C').Select(p => new {p.Name, p.Price, CategoryName = p.Category.Name});
+            Print("NAMES STARTED WITH 'C' AND ANONYMOUS OBJECT ", thirdResult);
+
+            var fourthResult = products.Where(p => p.Category.Tier == 1).OrderBy(p => p.Price).ThenBy(p => p.Name);
+            Print("TIER 1 ORDER BY PRICE THEN BY NAME ", thirdResult);
+        
+            var fifthResult = fourthResult.Skip(2).Take(4);
+            Print("TIER 1 ORDER BY PRICE THEN BY NAME SKIP 2 TAKE 4 ", fifthResult);
+        
+            
+            var sixthResult = products.FirstOrDefault();
+            Console.WriteLine("FIRST OF DEFAULT TEST 1: " + sixthResult);
+
+            var seventhResult = products.Where(p => p.Price > 3000).FirstOrDefault();
+            Console.WriteLine("FIRST OF DEFAULT TEST 2: " + seventhResult);
+        
+            
+            var eighthResult = products.Where(p => p.Id == 3).SingleOrDefault();
+            Console.WriteLine("SINGLE OR DEFAULT TEST 1: " + eighthResult);
+        
+            var ninthResult = products.Where(p => p.Id == 30).SingleOrDefault();
+            Console.WriteLine("SINGLE OR DEFAULT TEST 2: " + ninthResult);
+        
+            
+            var tenthResult = products.Max(p => p.Price);
+            Console.WriteLine("Max price: " + tenthResult);
+
+            var eleventhResult = products.Min(p => p.Price);
+            Console.WriteLine("Min price: " + eleventhResult);
+
+            var twelveResult = products.Where(p => p.Category.Id == 1).Sum(p => p.Price);
+            Console.WriteLine("Category 1 Sum prices: " + twelveResult);
+
+            var thirteen = products.Where(p => p.Category.Id == 1).Average(p => p.Price);
+            Console.WriteLine("Category 1 Average prices: " + thirteen); 
+
+            var fourteenResult = products.Where(p => p.Category.Id == 5).Select(p => p.Price).DefaultIfEmpty(0).Average();
+            Console.WriteLine("Category 5 Average prices: " + fourteenResult);
+
+            var fifteenResult = products.Where(p => p.Category.Id == 1).Select(p => p.Price).Aggregate(0.0, (x, y) => x + y);
+            Console.WriteLine("Category 1 aggregate sum: " + fifteenResult);
+        
+            
+            var sixteenResult = products.GroupBy(p => p.Category);
+            foreach (IGrouping<Category, Product> group in sixteenResult){
+                Console.WriteLine("Category " + group.Key.Name);
+                foreach (Product p in group){
+                    Console.WriteLine(p);
+                }
+                Console.WriteLine();
+            }
+        }
     }
-}
