@@ -263,8 +263,8 @@ public class Methods{
             var twelveResult = products.Where(p => p.Category.Id == 1).Sum(p => p.Price);
             Console.WriteLine("Category 1 Sum prices: " + twelveResult);
 
-            var thirteen = products.Where(p => p.Category.Id == 1).Average(p => p.Price);
-            Console.WriteLine("Category 1 Average prices: " + thirteen); 
+            var thirteenResult = products.Where(p => p.Category.Id == 1).Average(p => p.Price);
+            Console.WriteLine("Category 1 Average prices: " + thirteenResult); 
 
             var fourteenResult = products.Where(p => p.Category.Id == 5).Select(p => p.Price).DefaultIfEmpty(0).Average();
             Console.WriteLine("Category 5 Average prices: " + fourteenResult);
@@ -281,5 +281,78 @@ public class Methods{
                 }
                 Console.WriteLine();
             }
+        }
+
+        public void TestarLINQSQL(){
+    // static void Print<T>(string message, IEnumerable<T> collection){
+        // Console.WriteLine(message);
+        // foreach(T obj in collection){
+        //     Console.WriteLine(obj);
+        // }
+        // Console.WriteLine();
+        // }
+        // static void Main (string[] args) {
+            Category firstCategory = new Category(){ Id = 1, Name = "Tools", Tier = 2 };
+            Category secondCategory = new Category(){ Id = 2, Name = "Computers", Tier = 1 };
+            Category thirdCategory = new Category(){ Id = 3, Name = "Electronics", Tier = 1 };
+        
+            List<Products> products = new List<Products>(){
+                new Products { Id = 1, Name = "Computer", Price = 1110, Category = secondCategory },
+                new Products { Id = 2, Name = "Hammer", Price = 90, Category = firstCategory },
+                new Products { Id = 3, Name = "TV", Price = 1700, Category = thirdCategory },
+                new Products { Id = 4, Name = "Notebook", Price = 1300, Category = secondCategory },
+                new Products { Id = 5, Name = "Saw", Price = 80, Category = firstCategory },
+                new Products { Id = 6, Name = "Tablet", Price = 700, Category = secondCategory },
+                new Products { Id = 7, Name = "Camera", Price = 700, Category = thirdCategory },
+                new Products { Id = 8, Name = "Printer", Price = 350, Category = thirdCategory },
+                new Products { Id = 9, Name = "MacBook", Price = 1800, Category = secondCategory },
+                new Products { Id = 10, Name = "Sound Bar", Price = 700, Category = thirdCategory },
+                new Products { Id = 11, Name = "Levej", Price = 70, Category = firstCategory }
+            };
+
+            var firstResult = 
+                        from p in products
+                        where p.Category.Tier == 1 && p.Price < 900
+                        select p;
+
+            var secondResult = 
+                        from p in products
+                        where p.Category.Name == "Tools"
+                        select p.Name;
+
+            var thirdResult = 
+                        from p in products
+                        where p.Name[0] == 'C'
+                        select new {
+                            p.Name,
+                            p.Price,
+                            CategoryName = p.Category.Name
+                        };
+
+            var fourthResult = 
+                        from p in products
+                        where p.Category.Tier == 1
+                        orderby p.Name 
+                        orderby p.Price
+                        select p;
+
+            var fifthResult =
+                        (from p in fourthResult
+                        select p).Skip(2).Take(4);
+
+            var sixthResult =
+                        (from p in products 
+                        select p).FirstOrDefault(); 
+            
+            var seventhResult = 
+                        (from p in products
+                        where p.Price > 3000
+                        select p).FirstOrDefault();
+
+            var sixteenResult = 
+                        from p in products
+                        group p by p.Category;                            
+    //     }
+    // }
         }
     }
