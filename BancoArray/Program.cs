@@ -74,8 +74,27 @@ namespace Course{
 
 
             Console.WriteLine();
-            Console.WriteLine("4:" );
+            Console.WriteLine("4: REMOVER" );
 
+            List<int> listaNumeroRepetidos = new List<int>() { 88, 11, 1, 89, 0, 3, 11, 89};
+
+                var numerosConjunto = new HashSet<int>();    
+                var numerosRepetidos = new HashSet<int>();
+
+                foreach (var numeros in listaNumeroRepetidos)
+                    if (!numerosConjunto.Add(numeros)){
+                        Console.WriteLine(listaNumeroRepetidos);
+                }
+
+
+            int[] numerosA = { 1, 2, 3, 4, 3, 55, 23, 2 };
+            int[] retiraDuplicados = numerosA.Distinct().ToArray();
+            
+            Console.WriteLine("Arrays de Números Duplicados:");
+            foreach(int item in numerosA) Console.WriteLine(item);
+            
+            Console.WriteLine("\n\nNova Array com duplicados removidos:");
+            foreach(int item in retiraDuplicados) Console.WriteLine(item);
         }
     }
 }
